@@ -35,4 +35,4 @@ ReactDOM.render(
       </Route>
   	</Router>
   </Provider>
-  , document.getElementById('app'))       // we select the html div with class 'container' to inject our component tree into
+  , document.querySelector('.container'))       // we select the html div with class 'container' to inject our component tree into
