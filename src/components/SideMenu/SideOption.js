@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import PropTypes from 'prop-types'
 // `Link` is a react-router component for routing buttons that redirect you to various urls
 import { Link } from 'react-router'
 
@@ -16,10 +17,10 @@ class SideOption extends Component {
 }
 
 SideOption.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  link: React.PropTypes.string.isRequired,
-	toggleSideMenu: React.PropTypes.func.isRequired,
-	sideMenuVisible: React.PropTypes.bool
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+	toggleSideMenu: PropTypes.func.isRequired,
+	sideMenuVisible: PropTypes.bool
 }
 
 const RadiumHOC = Radium(SideOption)

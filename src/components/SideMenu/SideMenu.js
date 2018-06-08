@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import PropTypes from 'prop-types'
 
 import SideHeader from './SideHeader'
 import SideOption from './SideOption'
@@ -20,7 +21,7 @@ class SideMenu extends Component {
 }
 
 SideMenu.propTypes = {
-	sideMenuVisible: React.PropTypes.bool
+	sideMenuVisible: PropTypes.bool
 }
 
 const RadiumHOC = Radium(SideMenu)

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
 // store.js represents the overall Redux state
 // store.js is exported for use inside ./index.js (ie. <Provider store={Store}>)

@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Radium from 'radium'
+import PropTypes from 'prop-types'
 
 import { toggleSideMenu } from '../../actions/sideMenuActions'
 
@@ -17,8 +18,8 @@ class SideIcon extends Component {
 }
 
 SideIcon.propTypes = {
-  toggleSideMenu: React.PropTypes.func.isRequired,
-	sideMenuVisible: React.PropTypes.bool
+  toggleSideMenu: PropTypes.func.isRequired,
+	sideMenuVisible: PropTypes.bool
 }
 
 const RadiumHOC = Radium(SideIcon)
