@@ -4,6 +4,7 @@
 // `React` is used for general React functions, such as declaring property types (eg `React.PropTypes.bool`)
 // `Component` is a ES6 class that defines the format of React components, which is done with `extends`
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 // connect() is a state-related HOC "higher order component" use to wrap around our React component. HOCs give additional functionality to a component.
 import {connect} from 'react-redux'
@@ -69,8 +70,8 @@ class App extends Component {
 // Possible attributes include `bool`, `number`, `string`, `object`, `array` and `isRequired`
 // This also acts as a form of documentation
 App.propTypes = {
-  toggleSideMenu: React.PropTypes.func.isRequired,
-  sideMenuVisible: React.PropTypes.bool
+  toggleSideMenu: PropTypes.func.isRequired,
+  sideMenuVisible: PropTypes.bool
 }
 
 // Now we wrap the entire <App> component inside the Radium `higher order component` wrapper
