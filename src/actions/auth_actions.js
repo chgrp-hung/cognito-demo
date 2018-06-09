@@ -1,7 +1,9 @@
 import axios from 'axios';
-import {browserHistory} from 'react-router';
 import { AUTH_USER, UNAUTH_USER, SET_USER } from './action_types';
 import { API_URL } from '../api/API_URLS'
+import { createBrowserHistory } from 'history'
+
+const history = createBrowserHistory()
 
 export function logoutUserFromReduxState(){
 	return function(dispatch){
@@ -21,6 +23,6 @@ export function setUserToReduxState(user){
 			payload: user
 		})
 		// redirect to route
-		browserHistory.push('/profile');
+		history.push('/profile');
 	}
 }

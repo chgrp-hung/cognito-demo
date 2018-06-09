@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 import {authenticateUser, setUserToReduxState} from '../../actions/auth_actions';
@@ -67,7 +66,7 @@ class VerifyAccount extends Component {
 				pin: this.state.pin
 			})
 			.then((data)=>{
-				browserHistory.push('/auth/login')
+				this.props.history.push('/auth/login')
 			})
 			.catch((err)=>{
 				console.log(err)
@@ -87,7 +86,7 @@ class VerifyAccount extends Component {
 	}
 
 	redirectTo(route){
-		browserHistory.push(route)
+		history.push(route)
 	}
 
 	render(){
@@ -169,7 +168,7 @@ class VerifyAccount extends Component {
 
 							</form>
 							<div onClick={()=>this.setState({resend: true})} style={comStyles().resend}>Resend Verification PIN</div>
-							<div onClick={()=>browserHistory.push('/auth/login')} style={comStyles().back}>Back To Login</div>
+							<div onClick={()=>history.push('/auth/login')} style={comStyles().back}>Back To Login</div>
 						</div>
 					}
 				</div>

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {signoutLandlord} from '../../actions/auth_actions';
 import Radium from 'radium'
-import {browserHistory} from 'react-router'
 import { xMidBlue } from '../../stylesJS/base_colors'
 import PropTypes from 'prop-types'
 
@@ -12,7 +11,7 @@ class SignOut extends Component {
 		// signoutLandlord() is a function from `actions` coming from index.js
 		this.props.signoutLandlord()
 		setTimeout(()=>{
-			browserHistory.push('/login')
+			this.props.history.push('/login')
 		}, 500)
 	}
 

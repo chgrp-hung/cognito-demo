@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
+import { Link, withRouter } from 'react-router-dom'
 import { xMidBlue } from '../../stylesJS/base_colors'
 import PropTypes from 'prop-types'
 
@@ -20,7 +20,11 @@ class SignUp extends Component {
 			errorMessage: null,
 			loading: false
 		}
-	}
+  }
+  
+  componentWillMount() {
+    console.log('signup mount')
+  }
 
 	handleChange(attr, event){
 		this.setState({
@@ -54,7 +58,7 @@ class SignUp extends Component {
 						// if successful, then save the email to localStorage so we can pre-fill the email form on the login & verify account screens
 						localStorage.setItem('User_Email', email)
 						// re-route to the verify account screen
-						browserHistory.push('/auth/verify_account')
+						this.props.router.history.push('/auth/verify_account')
 					})
 					.catch((err)=>{
 						// if failure, display the error message and toggle the loading icon to disappear
@@ -76,7 +80,8 @@ class SignUp extends Component {
 	}
 
 	redirectToSignin(){
-		browserHistory.push('/auth/login')
+    this.props.history.push('/auth/login')
+    // console.log
 	}
 
 	render(){
@@ -115,7 +120,7 @@ class SignUp extends Component {
 						}
 
 					</form>
-					<div onClick={this.redirectToSignin.bind(this)} style={comStyles().signin}>Sign In</div>
+          <Link to={'/login'} style={comStyles().signin}>Sign In</Link>
 				</div>
 			</div>
 		);
@@ -133,7 +138,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, {signUpUser})(RadiumHOC);
+export default withRouter(connect(mapStateToProps, {signUpUser})(RadiumHOC));
 
 // ========================================================
 

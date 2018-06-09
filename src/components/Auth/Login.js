@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
 import PropTypes from 'prop-types'
+import { Link, withRouter } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 
@@ -20,7 +20,11 @@ class Login extends Component {
 			errorMessage: null,
 			loading: false
 		}
-	}
+  }
+  
+  componentWillMount() {
+    console.log('login mount')
+  }
 
 	componentDidMount(){
 		const savedEmail = localStorage.getItem('User_Email')
@@ -59,7 +63,7 @@ class Login extends Component {
 	}
 
 	redirectTo(route){
-		browserHistory.push(route)
+		this.props.history.push(route)
 	}
 
 
@@ -98,10 +102,10 @@ class Login extends Component {
 						</div>
 						:
 						null
-					}
-					<div onClick={()=>this.redirectTo('/auth/signup')} style={comStyles().signup}>Sign Up</div>
-					<div onClick={()=>this.redirectTo('/auth/verify_account')} style={comStyles().verify}>Verify Account</div>
-					<div onClick={()=>this.redirectTo('/auth/forgot_password')} style={comStyles().forgot}>Forgot Password</div>
+          }
+          <Link style={comStyles().signup} to={'/signup'}>Sign Up</Link>
+          <Link style={comStyles().verify} to={'/verify_account'}>Verify Account</Link>
+          <Link style={comStyles().forgot} to={'/forgot_password'}>Forgot Password</Link>
 				</div>
 			</div>
 		);
@@ -120,7 +124,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, {setUser})(RadiumHOC);
+export default withRouter(connect(mapStateToProps, {setUser})(RadiumHOC))
 
 
 // =========================================================
