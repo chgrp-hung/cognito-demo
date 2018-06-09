@@ -8,8 +8,6 @@ import { Link } from 'react-router-dom'
 
 import { toggleSideMenu } from '../../actions/sideMenuActions'
 
-console.log('Link', Link)
-
 class SideOption extends Component {
 	render() {
 		return (
