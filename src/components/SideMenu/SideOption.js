@@ -4,17 +4,21 @@ import {connect} from 'react-redux';
 import Radium from 'radium'
 import PropTypes from 'prop-types'
 // `Link` is a react-router component for routing buttons that redirect you to various urls
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { toggleSideMenu } from '../../actions/sideMenuActions'
+
+console.log('Link', Link)
 
 class SideOption extends Component {
 	render() {
 		return (
-        <Link to={this.props.link} style={comStyles(this.props.sideMenuVisible).mainview} onClick={this.props.toggleSideMenu}>{this.props.text}</Link>
+<Link to={this.props.link} style={comStyles(this.props.sideMenuVisible).mainview} onClick={this.props.toggleSideMenu}>{this.props.text}</Link>
 		)
 	}
 }
+
+console.log('side', SideOption)
 
 SideOption.propTypes = {
   text: PropTypes.string.isRequired,

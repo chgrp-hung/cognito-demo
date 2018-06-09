@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
 import { browserHistory } from 'react-router'
+import PropTypes from 'prop-types'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 
@@ -108,7 +109,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-	handleSubmit: React.PropTypes.func
+	handleSubmit: PropTypes.func
 };
 
 const RadiumHOC = Radium(Login);

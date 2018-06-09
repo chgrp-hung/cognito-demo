@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
+import { createBrowserHistory } from 'history'
 
 import Store from './store'
 import App from './components/app'
-import Home from './components/home'
 import Login from './components/Auth/Login'
 import SignUp from './components/Auth/SignUp'
 import SignOut from './components/Auth/SignOut'
 import VerifyAccount from './components/Auth/VerifyAccount'
 import ResetPassword from './components/Auth/ResetPassword'
+
+const browserHistory = createBrowserHistory()
 
 // This is a component tree that will be injected into index.html <div class='container'></div>
 // The <Provider store={Store}> component is one provided by Redux. The `Store` is imported from `./store.js`
@@ -23,16 +25,14 @@ import ResetPassword from './components/Auth/ResetPassword'
 ReactDOM.render(
   <Provider store={Store}>
   	<Router history={browserHistory}>
-      <Route path='/' component={App}>
-        <IndexRoute component={Home} />
-        <Route path='auth'>
-          <Route path='login' component={Login}></Route>
-          <Route path='signup' component={SignUp}></Route>
-          <Route path='signout' component={SignOut}></Route>
-          <Route path='verify_account' component={VerifyAccount}></Route>
-          <Route path='forgot_password' component={ResetPassword}></Route>
-        </Route>
-      </Route>
+      <Switch>
+        <Route path='/' component={App} />
+        <Route path='/auth' component={Login} />
+        <Route path='/signup' component={SignUp} />
+        <Route path='/signout' component={SignOut} />
+        <Route path='/verify_account' component={VerifyAccount} />
+        <Route path='/forgot_passwowrd' component={ResetPassword} />
+      </Switch>
   	</Router>
   </Provider>
   , document.querySelector('.container'))       // we select the html div with class 'container' to inject our component tree into

@@ -4,6 +4,7 @@ import {signoutLandlord} from '../../actions/auth_actions';
 import Radium from 'radium'
 import {browserHistory} from 'react-router'
 import { xMidBlue } from '../../stylesJS/base_colors'
+import PropTypes from 'prop-types'
 
 class SignOut extends Component {
 
@@ -25,7 +26,7 @@ class SignOut extends Component {
 }
 
 SignOut.propTypes = {
-	signoutLandlord: React.PropTypes.func.isRequired
+	signoutLandlord: PropTypes.func.isRequired
 };
 
 const RadiumHOC = Radium(SignOut);

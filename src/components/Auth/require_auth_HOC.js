@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 // this 'higher order component'(HOC) creator takes a component (called ComposedComponent)
 // and returns a new component with added functionality
@@ -12,7 +13,7 @@ export default function(ComposedComponent){
 		// so contextTypes{} is a React way of seeing these objects
 		// `static` means contextTypes is a class defined property (the original blueprint)
 		static contextTypes = {
-			router: React.PropTypes.object
+			router: PropTypes.object
 		}
 
 
