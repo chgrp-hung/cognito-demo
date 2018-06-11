@@ -21,11 +21,6 @@ class SignUp extends Component {
 			loading: false
 		}
   }
-  
-  componentWillMount() {
-    console.log('signup mount')
-    console.log('props', this.props)
-  }
 
 	handleChange(attr, event){
 		this.setState({
@@ -47,8 +42,10 @@ class SignUp extends Component {
 	signup(){
 		// check that we have the mandatory attributes of `agentName`, `email` and `password`
 		if(this.state.agentName && this.state.email && this.state.password){
+      console.log('in first')
 			// check that the password and password confirmation match
 			if(this.state.password == this.state.passwordConfirm){
+        console.log('in second')
 				// if all checks pass, then toggle the loading icon as we run a syncronous piece of code
 				this.setState({loading: true})
 				// call the AWS Cognito function that we named `signUpUser`
@@ -62,7 +59,8 @@ class SignUp extends Component {
 						this.props.router.history.push('/auth/verify_account')
 					})
 					.catch((err)=>{
-						// if failure, display the error message and toggle the loading icon to disappear
+            // if failure, display the error message and toggle the loading icon to disappear
+            console.log('in error', err)
 						this.setState({
 							errorMessage: err.message,
 							loading: false
