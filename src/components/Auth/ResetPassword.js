@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 import {authenticateUser} from '../../actions/auth_actions';
@@ -52,7 +51,7 @@ class ResetPassword extends Component {
 			this.state.cognitoUserPackage.cognitoUser
 				.confirmPassword(this.state.pin, this.state.password, this.state.cognitoUserPackage.thirdArg)
 			setTimeout(()=>{
-				browserHistory.push("/auth/login")
+				this.props.history.push("/login")
 			}, 500)
 		}
 	}
@@ -111,7 +110,7 @@ class ResetPassword extends Component {
 						:
 						null
 					}
-					<div onClick={()=>browserHistory.push('/auth/login')} style={comStyles().back}>Back To Login</div>
+					<div onClick={()=>history.push('/auth/login')} style={comStyles().back}>Back To Login</div>
 				</div>
 			</div>
 		);
@@ -129,7 +128,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps)(RadiumHOC);
+export default connect(mapStateToProps)(RadiumHOC)
 
 
 // =========================================================
