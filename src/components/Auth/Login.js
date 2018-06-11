@@ -3,7 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
 import PropTypes from 'prop-types'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 
@@ -119,12 +119,9 @@ Login.propTypes = {
 const RadiumHOC = Radium(Login);
 
 // if there is an error, it will appear on the state tree
-function mapStateToProps(state){
-	return {
-	}
-}
+const mapStateToProps = ({ location }) => ({ location })
 
-export default withRouter(connect(mapStateToProps, {setUser})(RadiumHOC))
+export default connect(mapStateToProps, {setUser}, null)(RadiumHOC)
 
 
 // =========================================================

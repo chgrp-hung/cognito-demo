@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { xMidBlue } from '../../stylesJS/base_colors'
 import PropTypes from 'prop-types'
 
@@ -24,6 +24,7 @@ class SignUp extends Component {
   
   componentWillMount() {
     console.log('signup mount')
+    console.log('props', this.props)
   }
 
 	handleChange(attr, event){
@@ -133,12 +134,9 @@ SignUp.propTypes = {
 
 const RadiumHOC = Radium(SignUp);
 
-function mapStateToProps(state){
-	return {
-	}
-}
+const mapStateToProps = ({ location }) => ({ location })
 
-export default withRouter(connect(mapStateToProps, {signUpUser})(RadiumHOC));
+export default connect(mapStateToProps, {signUpUser}, null)(RadiumHOC)
 
 // ========================================================
 

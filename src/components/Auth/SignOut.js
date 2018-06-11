@@ -34,7 +34,7 @@ function mapDispatchToProps(dispatch){
 	signoutLandlord: dispatch(signoutLandlord)
 }
 
-export default connect(null, {signoutLandlord})(RadiumHOC);
+export default connect(null, {signoutLandlord})(RadiumHOC)
 
 
 // ==================================

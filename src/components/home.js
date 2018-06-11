@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import { withRouter } from 'react-router-dom'
 
 import { xWhiteSmoke } from '../stylesJS/base_colors'
 
@@ -38,7 +39,7 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(RadiumHOC)
+export default withRouter(connect(mapStateToProps)(RadiumHOC))
 
 
 // ================================

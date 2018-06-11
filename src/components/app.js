@@ -88,7 +88,7 @@ function mapStateToProps(state){
 // it also gives access to action creators by passing them in as part of an object. This will be the second arguement to connect()
 // finally we pass in RadiumHOC that we created earlier. We can infinitely nest HOC inside eachother
 // now we can export this results on this connect(), which is our final <App> HOC that can be used throughout our app
-export default withRouter(connect(mapStateToProps, {toggleSideMenu})(RadiumHOC))
+export default connect(mapStateToProps, {toggleSideMenu})(RadiumHOC)
 
 // ================================
 

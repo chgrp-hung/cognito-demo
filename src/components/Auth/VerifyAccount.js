@@ -188,7 +188,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, {authenticateUser, setUserToReduxState})(RadiumHOC);
+export default connect(mapStateToProps, {authenticateUser, setUserToReduxState})(RadiumHOC)
 
 
 // =========================================================

@@ -128,7 +128,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps)(RadiumHOC);
+export default connect(mapStateToProps)(RadiumHOC)
 
 
 // =========================================================
