@@ -43,7 +43,7 @@ export function signUpUser({email, agentName, password}){
 		// call the signUp method of our userPool, passing in email+password as the first 2 args (the two that AWS requires)
 		// and as the 3rd arg pass in the attributeList array, followed by `null` as the 4th arg
 		// finally as the 5th (last) arg, pass in the callback function that has the error or result from AWS
-    userPool.signUp(email, password, null, null, (err, result) => {
+    userPool.signUp(email, password, attributeList, null, (err, result) => {
       if (err) {
         console.error('ERROR::', err)
         reject(err)
