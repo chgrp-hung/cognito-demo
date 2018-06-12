@@ -73,7 +73,8 @@ export function signInUser({email, password}){
 		// call the `authenticateUser` method from Cognito, passing in the `CognitoUser` object and the `AuthenticationDetails` object
 		authenticateUser(cognitoUser, authenticationDetails)
 			.then(()=>{
-				// if successfully authenticated, build the user object to return to the Redux state to use
+        // if successfully authenticated, build the user object to return to the Redux state to use
+        console.log('here i am')
 				return buildUserObject(cognitoUser)
 			})
 			.then((userProfileObject)=>{
@@ -120,7 +121,8 @@ function authenticateUser(cognitoUser, authenticationDetails){
 							// then we refresh our credentials to use the latest one that we set
 	            AWS.config.credentials.refresh(function(){
 	            	console.log(AWS.config.credentials)
-	            })
+              })
+              
 							// resolve the promise to move on to next step after authentication
 	            res()
 	        },

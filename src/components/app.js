@@ -98,7 +98,7 @@ export default connect(mapStateToProps, {toggleSideMenu})(RadiumHOC)
 const comStyles = (sideMenuVisible) => {
   let paramCSS = {
     display: "none",
-    backgroundColor: "rgba(0,0,0,0)"
+    backgroundColor: "rgba(0,0,0,0)",
   }
   if(sideMenuVisible){
     paramCSS.display = "flex"
@@ -110,12 +110,14 @@ const comStyles = (sideMenuVisible) => {
     // and the values in each key-value pair must be wrapped in "quotations", unless we want to use an imported variable
     app: {
       width: "100%",
-      height: "100vh",
+      height: "100%",
       margin: "0",
 			left: "0",
 			top: "0",
-			position: "fixed",
+      position: "fixed",
+      overflow: 'auto',
       backgroundColor: xWhiteSmoke,
+      userSelect: 'text',
     },
     sideMenuIcon: {
       position: "absolute",
