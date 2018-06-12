@@ -21,8 +21,8 @@ const Root = ({ location }) => (
       <Route path='/login' component={Login} location={location} />
       <Route path='/signup' component={SignUp} location={location}/>
       <Route path='/signout' component={SignOut} location={location} />
-      <Route path='/verify_account' component={VerifyAccount} location={location} />
-      <Route path='/forgot_passwowrd' component={ResetPassword} location={location} />
+      <Route path='/verify-account' component={VerifyAccount} location={location} />
+      <Route path='/forgot-password' component={ResetPassword} location={location} />
     </App>
   </Switch>
 )
