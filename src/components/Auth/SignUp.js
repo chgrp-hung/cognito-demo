@@ -87,7 +87,7 @@ class SignUp extends Component {
 		return (
 			<div style={comStyles().mainview}>
 				<div style={comStyles().entrance}>
-					<img src='../../../res/images/aws_logo.png' style={comStyles().logo} />
+					<img src='static/images/aws_logo.png' style={comStyles().logo} />
 					<h1 style={comStyles().userText}>User Sign Up</h1>
 					<form style={comStyles().form}>
 						<div className='form-group'>
@@ -112,7 +112,7 @@ class SignUp extends Component {
 							this.state.loading
 							?
 							<div style={comStyles().loadingBox}>
-								<img src='../../../res/images/loading.gif' style={comStyles().loadingGif} />
+								<img src='static/images/loading.gif' style={comStyles().loadingGif} />
 							</div>
 							:
 							<button type='button' style={comStyles().signupButton} onClick={this.signup.bind(this)} className='btn btn-primary btn-block'>Sign Up</button>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import { Link } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 import {authenticateUser} from '../../actions/auth_actions';
@@ -61,12 +62,12 @@ class ResetPassword extends Component {
 		return (
 			<div style={comStyles().mainview}>
 				<div style={comStyles().entrance}>
-					<img src='../../../res/images/aws_logo.png' style={comStyles().logo} />
+					<img src='static/images/aws_logo.png' style={comStyles().logo} />
 					<h1 style={comStyles().landlordText}>Reset Password</h1>
 					<form style={comStyles().form}>
 						{
 							this.state.cognitoUserPackage
-							?
+							? (
 							<div>
 								<div className='form-group'>
 									<label style={comStyles().formText}>Verification PIN</label>
@@ -82,7 +83,7 @@ class ResetPassword extends Component {
 								</div>
 								<button onClick={this.verifyPin.bind(this)} style={comStyles().button} type='button' className='btn btn-primary btn-block'>Change Password</button>
 							</div>
-							:
+						 ) : (
 							<div>
 								<div className='form-group'>
 									<label style={comStyles().formText}>Email</label>
@@ -92,12 +93,13 @@ class ResetPassword extends Component {
 									this.state.loading
 									?
 									<div style={comStyles().loadingBox}>
-										<img src='../../../res/images/loading.gif' style={comStyles().loadingGif} />
+										<img src='static/images/loading.gif' style={comStyles().loadingGif} />
 									</div>
 									:
 									<button onClick={this.sendVerificationEmail.bind(this)} style={comStyles().button} type='button' className='btn btn-primary btn-block'>Send Reset PIN</button>
 								}
 							</div>
+              )
 						}
 					</form>
 					{
@@ -109,8 +111,8 @@ class ResetPassword extends Component {
 						</div>
 						:
 						null
-					}
-					<div onClick={()=>history.push('/auth/login')} style={comStyles().back}>Back To Login</div>
+          }
+          <Link to={'/login'} style={comStyles().back}>Back To Login</Link>
 				</div>
 			</div>
 		);
