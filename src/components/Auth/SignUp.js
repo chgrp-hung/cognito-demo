@@ -42,10 +42,8 @@ class SignUp extends Component {
 	signup(){
 		// check that we have the mandatory attributes of `agentName`, `email` and `password`
 		if(this.state.agentName && this.state.email && this.state.password){
-      console.log('in first')
 			// check that the password and password confirmation match
 			if(this.state.password == this.state.passwordConfirm){
-        console.log('in second')
 				// if all checks pass, then toggle the loading icon as we run a syncronous piece of code
 				this.setState({loading: true})
 				// call the AWS Cognito function that we named `signUpUser`
@@ -56,7 +54,7 @@ class SignUp extends Component {
 						// if successful, then save the email to localStorage so we can pre-fill the email form on the login & verify account screens
 						localStorage.setItem('User_Email', email)
 						// re-route to the verify account screen
-						this.props.router.history.push('/auth/verify_account')
+						this.props.history.push('verify-account')
 					})
 					.catch((err)=>{
             // if failure, display the error message and toggle the loading icon to disappear
@@ -75,12 +73,11 @@ class SignUp extends Component {
 			this.setState({
 				errorMessage: "Please include an agent name, email address and password."
 			})
-		}
+    }
 	}
 
 	redirectToSignin(){
-    this.props.history.push('/auth/login')
-    // console.log
+    this.props.history.push('/login')
 	}
 
 	render(){
