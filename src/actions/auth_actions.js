@@ -13,6 +13,11 @@ export function logoutUserFromReduxState(){
 	}
 }
 
+export const setUser = user => dispatch => {
+  dispatch({ type: AUTH_USER })
+  dispatch({ type: SET_USER, payload: user })
+}
+
 export function setUserToReduxState(user){
 	return function(dispatch){
 		dispatch({

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 
-import {setUser} from '../../actions/auth_actions'
+import { setUser, setUserToReduxState } from '../../actions/auth_actions'
 import {signInUser, forgotPassword, retrieveUserFromLocalStorage} from '../../api/aws/aws_cognito'
 
 class Login extends Component {
@@ -52,7 +52,8 @@ class Login extends Component {
 			password: this.state.password
 		}).then((userProfileObject)=>{
 			localStorage.setItem('User_Email', this.state.email)
-			this.props.setUser(userProfileObject)
+      this.props.setUser(userProfileObject)
+      this.props.history.push('/profile')
 		})
 		.catch((err)=>{
 			this.setState({
@@ -121,7 +122,7 @@ const RadiumHOC = Radium(Login);
 // if there is an error, it will appear on the state tree
 const mapStateToProps = ({ location }) => ({ location })
 
-export default connect(mapStateToProps, {setUser}, null)(RadiumHOC)
+export default connect(mapStateToProps, { setUser, setUserToReduxState }, null)(RadiumHOC)
 
 
 // =========================================================

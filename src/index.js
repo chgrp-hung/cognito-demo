@@ -12,6 +12,7 @@ import SignUp from './components/Auth/SignUp'
 import SignOut from './components/Auth/SignOut'
 import VerifyAccount from './components/Auth/VerifyAccount'
 import ResetPassword from './components/Auth/ResetPassword'
+import Profile from './components/Profile/Profile'
 
 
 // dirty trick to force update
@@ -23,6 +24,7 @@ const Root = ({ location }) => (
       <Route path='/signout' component={SignOut} location={location} />
       <Route path='/verify-account' component={VerifyAccount} location={location} />
       <Route path='/forgot-password' component={ResetPassword} location={location} />
+      <Route path='/profile' component={Profile} location={location} />
     </App>
   </Switch>
 )

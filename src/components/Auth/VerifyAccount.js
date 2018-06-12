@@ -67,7 +67,7 @@ class VerifyAccount extends Component {
 				pin: this.state.pin
 			})
 			.then((data)=>{
-				this.props.history.push('/auth/login')
+				this.history.push('/login')
 			})
 			.catch((err)=>{
 				console.log(err)
@@ -87,7 +87,7 @@ class VerifyAccount extends Component {
 	}
 
 	redirectTo(route){
-		history.push(route)
+		this.props.history.push(route)
 	}
 
 	render(){
