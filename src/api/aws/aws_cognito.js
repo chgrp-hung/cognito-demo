@@ -357,13 +357,16 @@ export function retrieveUserFromLocalStorage(){
 			    		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 	                IdentityPoolId : IDENTITY_POOL_ID, // your identity pool id here
 	                Logins : loginsObj
-	            })
-							// refresh the credentials so we can use it in our app
-	            AWS.config.credentials.refresh(function(){
-	            	console.log(AWS.config.credentials)
-								// resolve the promise by again building the user object to be used in our React-Redux app
-	            	res(buildUserObject(cognitoUser))
-	            })
+              })
+              // console.log('maybe here')
+              // refresh the credentials so we can use it in our app
+              AWS.config.credentials.refresh(() => res(buildUserObject(cognitoUser)))
+	            // AWS.config.credentials.refresh(function(){
+              //   console.log('found it!')
+	            // 	console.log(AWS.config.credentials)
+							// 	// resolve the promise by again building the user object to be used in our React-Redux app
+	            // 	res(buildUserObject(cognitoUser))
+	            // })
 	        });
 	    }else{
 				// if failure, reject the promise
