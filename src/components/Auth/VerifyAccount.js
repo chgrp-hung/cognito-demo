@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 import {authenticateUser, setUserToReduxState} from '../../actions/auth_actions';
@@ -67,7 +67,7 @@ class VerifyAccount extends Component {
 				pin: this.state.pin
 			})
 			.then((data)=>{
-				browserHistory.push('/auth/login')
+				this.props.history.push('/auth/login')
 			})
 			.catch((err)=>{
 				console.log(err)
@@ -87,14 +87,14 @@ class VerifyAccount extends Component {
 	}
 
 	redirectTo(route){
-		browserHistory.push(route)
+		history.push(route)
 	}
 
 	render(){
 		return (
 			<div style={comStyles().mainview}>
 				<div style={comStyles().entrance}>
-					<img src='../../../res/images/aws_logo.png' style={comStyles().logo} />
+					<img src='static/images/aws_logo.png' style={comStyles().logo} />
 					<h1 style={comStyles().landlordText}>Landlord Account Verification</h1>
 
 					{
@@ -119,12 +119,12 @@ class VerifyAccount extends Component {
 								this.state.loading
 								?
 								<div style={comStyles().loadingBox}>
-									<img src='../../../res/images/loading.gif' style={comStyles().loadingGif} />
+									<img src='static/images/loading.gif' style={comStyles().loadingGif} />
 								</div>
 								:
 								<button onClick={this.resendPIN.bind(this)} style={comStyles().button} type='button' className='btn btn-primary btn-block'>Resend Verification PIN</button>
-							}
-							<div onClick={()=>this.redirectTo('/auth/signup')} style={comStyles().login}>Back To Login</div>
+              }
+              <Link to={'/signup'} style={comStyles().login}>Back To Login</Link>
 						</div>
 						:
 						<div>
@@ -161,7 +161,7 @@ class VerifyAccount extends Component {
 									this.state.loading
 									?
 									<div style={comStyles().loadingBox}>
-										<img src='../../../res/images/loading.gif' style={comStyles().loadingGif} />
+										<img src='static/images/loading.gif' style={comStyles().loadingGif} />
 									</div>
 									:
 									<button onClick={this.verifyPin.bind(this)} style={comStyles().button} type='button' className='btn btn-primary btn-block'>Verify</button>
@@ -169,7 +169,7 @@ class VerifyAccount extends Component {
 
 							</form>
 							<div onClick={()=>this.setState({resend: true})} style={comStyles().resend}>Resend Verification PIN</div>
-							<div onClick={()=>browserHistory.push('/auth/login')} style={comStyles().back}>Back To Login</div>
+              <div style={comStyles().back}><Link to={'/login'}>Back To Login</Link></div>
 						</div>
 					}
 				</div>
@@ -189,7 +189,7 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, {authenticateUser, setUserToReduxState})(RadiumHOC);
+export default connect(mapStateToProps, {authenticateUser, setUserToReduxState})(RadiumHOC)
 
 
 // =========================================================

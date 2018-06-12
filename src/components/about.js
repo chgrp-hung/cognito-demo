@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import { withRouter } from 'react-router-dom'
 
 class About extends Component {
 
@@ -23,9 +24,9 @@ function mapStateToProps(state){
 
 const RadiumHOC = Radium(About)
 
-export default connect(
+export default withRouter(connect(
 
-)(RadiumHOC)
+)(RadiumHOC))
 
 // ================================
 

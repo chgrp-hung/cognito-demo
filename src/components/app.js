@@ -5,6 +5,7 @@
 // `Component` is a ES6 class that defines the format of React components, which is done with `extends`
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
 // connect() is a state-related HOC "higher order component" use to wrap around our React component. HOCs give additional functionality to a component.
 import {connect} from 'react-redux'
@@ -24,9 +25,6 @@ import SideIcon from './SideMenu/SideIcon'
 // We can also import action creators, for changing the Redux state from inside our component.
               // If we import action creators, they must be passed in with an object to the connect() HOC as the 2nd arguement
 import { toggleSideMenu } from '../actions/sideMenuActions'
-
-// import StyleRoot to be used for Radium style media queries
-import {StyleRoot} from 'radium';
 
 
 // we create our <App> component, but to inherit the behavior of a React component, we must `extends` the `Component` that was imported from React (see above)
@@ -49,19 +47,17 @@ class App extends Component {
     return (
       // Notice <div style={comStyles().app}> receives its CSS styling from the `comStyles()` function
       // this is what we mean by programatic CSS (via Javascript). See below for `comStyles()`
-      <StyleRoot>
-        <div style={comStyles().app}>
-          {/* we call a function of this component using this.renderSideMenu(). `this` refers to <App> */}
-          {this.renderSideMenu()}
-          <div>
-            {/* We have a onClick that calls a Redux action creator from `../actions/sideMenuActions.js` */}
-            <div onClick={this.props.toggleSideMenu} style={comStyles(this.props.sideMenuVisible).shadow}></div>
-            {/* Recall that inside ../index.js we defined <Route path='/' component={App}> as the deepest route
-                  in the component tree. The child routes are accessabile with {this.props.children} */}
-            {this.props.children}
-          </div>
+      <div style={comStyles().app}>
+        {/* we call a function of this component using this.renderSideMenu(). `this` refers to <App> */}
+        {this.renderSideMenu()}
+        <div>
+          {/* We have a onClick that calls a Redux action creator from `../actions/sideMenuActions.js` */}
+          <div onClick={this.props.toggleSideMenu} style={comStyles(this.props.sideMenuVisible).shadow}></div>
+          {/* Recall that inside ../index.js we defined <Route path='/' component={App}> as the deepest route
+                in the component tree. The child routes are accessabile with {this.props.children} */}
+          {this.props.children}
         </div>
-      </StyleRoot>
+      </div>
     )
   }
 }

@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Radium from 'radium'
+import { withRouter } from 'react-router-dom'
 
 import { xWhiteSmoke } from '../stylesJS/base_colors'
 
@@ -19,8 +20,8 @@ class Home extends Component {
           <h1 style={comStyles().header}>Kangzeroos</h1>
           <h3 style={comStyles().header}>Complete AWS Web Boilerplate</h3>
           <div style={comStyles().logosBox}>
-            <img src='../../../res/images/aws_logo.png' onClick={()=> this.goToLink('https://facebook.github.io/react/docs/hello-world.html')} style={comStyles().logo} />
-            <img src='../../../res/images/aws_set.png' onClick={()=> this.goToLink('http://redux.js.org/docs/introduction/')} style={comStyles().logos} />
+            <img src='static/images/aws_logo.png' onClick={()=> this.goToLink('https://facebook.github.io/react/docs/hello-world.html')} style={comStyles().logo} />
+            <img src='static/images/aws_set.png' onClick={()=> this.goToLink('http://redux.js.org/docs/introduction/')} style={comStyles().logos} />
           </div>
         </div>
 			</div>
@@ -38,7 +39,7 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(RadiumHOC)
+export default withRouter(connect(mapStateToProps)(RadiumHOC))
 
 
 // ================================

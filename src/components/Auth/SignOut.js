@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {signoutLandlord} from '../../actions/auth_actions';
 import Radium from 'radium'
-import {browserHistory} from 'react-router'
 import { xMidBlue } from '../../stylesJS/base_colors'
+import PropTypes from 'prop-types'
 
 class SignOut extends Component {
 
@@ -11,7 +11,7 @@ class SignOut extends Component {
 		// signoutLandlord() is a function from `actions` coming from index.js
 		this.props.signoutLandlord()
 		setTimeout(()=>{
-			browserHistory.push('/login')
+			this.props.history.push('/login')
 		}, 500)
 	}
 
@@ -25,7 +25,7 @@ class SignOut extends Component {
 }
 
 SignOut.propTypes = {
-	signoutLandlord: React.PropTypes.func.isRequired
+	signoutLandlord: PropTypes.func.isRequired
 };
 
 const RadiumHOC = Radium(SignOut);
@@ -34,7 +34,7 @@ function mapDispatchToProps(dispatch){
 	signoutLandlord: dispatch(signoutLandlord)
 }
 
-export default connect(null, {signoutLandlord})(RadiumHOC);
+export default connect(null, {signoutLandlord})(RadiumHOC)
 
 
 // ==================================

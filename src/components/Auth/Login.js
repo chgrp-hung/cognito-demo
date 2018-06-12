@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import Radium from 'radium'
-import { browserHistory } from 'react-router'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { xMidBlue } from '../../stylesJS/base_colors'
 
@@ -19,7 +20,11 @@ class Login extends Component {
 			errorMessage: null,
 			loading: false
 		}
-	}
+  }
+  
+  componentWillMount() {
+    console.log('login mount')
+  }
 
 	componentDidMount(){
 		const savedEmail = localStorage.getItem('User_Email')
@@ -58,7 +63,7 @@ class Login extends Component {
 	}
 
 	redirectTo(route){
-		browserHistory.push(route)
+		this.props.history.push(route)
 	}
 
 
@@ -66,7 +71,7 @@ class Login extends Component {
 		return (
 			<div style={comStyles().mainview}>
 				<div style={comStyles().entrance}>
-					<img src='../../../res/images/aws_logo.png' style={comStyles().logo} />
+					<img src='static/images/aws_logo.png' style={comStyles().logo} />
 					<h1 style={comStyles().landlordText}>User Login</h1>
 					<form style={comStyles().form}>
 						<div className='form-group'>
@@ -82,7 +87,7 @@ class Login extends Component {
 							this.state.loading
 							?
 							<div style={comStyles().loadingBox}>
-								<img src='../../../res/images/loading.gif' style={comStyles().loadingGif} />
+								<img src='static/images/loading.gif' style={comStyles().loadingGif} />
 							</div>
 							:
 							<button onClick={this.signin.bind(this)} style={comStyles().signupButton} type='button' className='btn btn-primary btn-block'>Sign in</button>
@@ -97,10 +102,10 @@ class Login extends Component {
 						</div>
 						:
 						null
-					}
-					<div onClick={()=>this.redirectTo('/auth/signup')} style={comStyles().signup}>Sign Up</div>
-					<div onClick={()=>this.redirectTo('/auth/verify_account')} style={comStyles().verify}>Verify Account</div>
-					<div onClick={()=>this.redirectTo('/auth/forgot_password')} style={comStyles().forgot}>Forgot Password</div>
+          }
+          <Link style={comStyles().signup} to={'/signup'}>Sign Up</Link>
+          <Link style={comStyles().verify} to={'/verify_account'}>Verify Account</Link>
+          <Link style={comStyles().forgot} to={'/forgot_password'}>Forgot Password</Link>
 				</div>
 			</div>
 		);
@@ -108,18 +113,15 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-	handleSubmit: React.PropTypes.func
+	handleSubmit: PropTypes.func
 };
 
 const RadiumHOC = Radium(Login);
 
 // if there is an error, it will appear on the state tree
-function mapStateToProps(state){
-	return {
-	}
-}
+const mapStateToProps = ({ location }) => ({ location })
 
-export default connect(mapStateToProps, {setUser})(RadiumHOC);
+export default connect(mapStateToProps, {setUser}, null)(RadiumHOC)
 
 
 // =========================================================

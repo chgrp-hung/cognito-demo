@@ -23,9 +23,7 @@ function mapStateToProps(state){
 
 const RadiumHOC = Radium(Settings)
 
-export default connect(
-
-)(RadiumHOC)
+export default connect()(RadiumHOC)
 
 // ================================
 
