@@ -21,21 +21,18 @@ class Login extends Component {
 			loading: false
 		}
   }
-  
-  componentWillMount() {
-    console.log('login mount')
-  }
 
 	componentDidMount(){
 		const savedEmail = localStorage.getItem('User_Email')
 		if(savedEmail){
 			this.setState({
 				email: savedEmail
-			})
+      })
 		}
 		retrieveUserFromLocalStorage()
 			.then((data)=>{
-				this.props.setUserToReduxState(data)
+        console.log('data', data)
+        this.props.setUserToReduxState(data)
 			})
 	}
 

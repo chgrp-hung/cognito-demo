@@ -76,10 +76,10 @@ const RadiumHOC = Radium(App)
 
 // We use the `mapStateToProps()` function to pass Redux state attributes to the <App> component
 // We will pass in mapStateToProps() to a connect() HOC to give this additional functionality
-function mapStateToProps(state){
+function mapStateToProps({ sideMenu }){
   return {
     // state.sideMenu.visible will be accessible by <App> using this.props.sideMenuVisible
-    sideMenuVisible: state.sideMenu.visible
+    sideMenuVisible: sideMenu.visible
   }
 }
 
